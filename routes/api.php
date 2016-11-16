@@ -19,5 +19,5 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware'=>['web','auth']], function ()
 {
-	Route::post('/word/admin/save','\App\Http\Controllers\Admin\Dictionary@save') ;
+	Route::post('/admin/word/save','\App\Http\Controllers\Admin\Dictionary@save') ;
 });
