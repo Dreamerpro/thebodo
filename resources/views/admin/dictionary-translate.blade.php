@@ -49,11 +49,11 @@ if($filters[1]){$query_array['type']=$filters[1];}
                                 {{$word->bodo_definition}}
                                 
                             @else
-                                <form @submit.prevent="save({{$key}},{{$word->id}})" v-if="!status[{{$key}}]" >
+                                <form v-if="!status[{{$key}}]" >
                                     <div class="form-group bodo-textarea">
                                         <textarea v-model="words[{{$key}}]" class="form-control"></textarea>
                                     </div>
-                                    <button type="submit" @click.stop class="btn btn-warning" :disabled=disableSB>
+                                    <button type="button" @click.prevent.stop="save({{$key}},{{$word->id}})" class="btn btn-warning" :disabled=disableSB>
                                             Save
                                     </button>
                                 </form>
