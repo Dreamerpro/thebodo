@@ -26,7 +26,49 @@ if($filters[1]){$query_array['type']=$filters[1];}
                     <div class="alert ">
                         Total Results : {{$words->total()}}
                     </div>
-                   <table class="table table-stripped animated fadeInUp">
+                   <div class="row clearfix animated fadeInUp">
+                       <div class="clearfix">
+                           <div>
+                                <span class="col-xs-1 col-md-1">#</span>
+                                <span class="col-xs-2 col-md-1">Word</span>
+                                <span class="hidden-xs col-md-2">Type</span>
+                                <span class="col-xs-5 col-md-4">English Definition</span>
+                                <span class="col-xs-4 col-md-3">Bodo Definition</span>
+                                <span class="hidden-xs col-xs-1">Editor</span>
+                            </div>
+                       </div>
+                        <div class="clearfix">
+                        @foreach($words as $key=>$word)
+                        <div class="text-warning clearfix" style="    border-top: 1px solid #eee; padding:10px 0;">
+                            <span class="col-xs-1 col-md-1">{{$word->id}}</span>
+                            <span class="col-xs-2 col-md-1">{{$word->word}}</span>
+                            <span class="hidden-xs col-md-2">{{$word->wordtype}}</span>
+                            <span class="col-xs-5 col-md-4">{{$word->definition}}</span>
+                            <span class="col-xs-4 col-md-3">
+                            @if($word->bodo_definition)
+                                {{$word->bodo_definition}}
+                                
+                            @else
+                                <form method="POST" @submit.prevent="save({{$key}},{{$word->id}})" v-if="!status[{{$key}}]" >
+                                    <div class="form-group bodo-textarea">
+                                        <textarea v-model="words[{{$key}}]" class="form-control"></textarea>
+                                    </div>
+                                    <button type="submit" @click.stop class="btn btn-warning" :disabled=disableSB>
+                                            Save
+                                    </button>
+                                </form>
+                                <!-- v-if="status[{{$key}}]" -->
+                                <span  v-html="words[{{$key}}]"></span>
+                            @endif
+
+                            </span>
+                            <span class="hidden-xs col-md-1">{{$word->user?$word->user->name:''}}</span>
+                        </div>
+                        @endforeach
+                        </div>
+                       
+                    </div>
+                   <!-- <table class="table table-stripped animated fadeInUp">
                        <thead>
                            <tr>
                                 <th>#</th>
@@ -57,7 +99,6 @@ if($filters[1]){$query_array['type']=$filters[1];}
                                             Save
                                     </button>
                                 </form>
-                                <!-- v-if="status[{{$key}}]" -->
                                 <span  v-html="words[{{$key}}]"></span>
                             @endif
 
@@ -65,7 +106,7 @@ if($filters[1]){$query_array['type']=$filters[1];}
                             <td>{{$word->user?$word->user->name:''}}</td>
                         </tr>
                        @endforeach
-                        </tbody>
+                        </tbody> -->
                        
                    </table>
                    <div class="text-center"> {{$words->appends($query_array)->links()}}</div>
