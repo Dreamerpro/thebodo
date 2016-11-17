@@ -53,7 +53,7 @@ if($filters[1]){$query_array['type']=$filters[1];}
                                     <div class="form-group bodo-textarea">
                                         <textarea v-model="words[{{$key}}]" class="form-control"></textarea>
                                     </div>
-                                    <button type="button" @click.prevent.stop="save({{$key}},{{$word->id}})" class="btn btn-warning" :disabled=disableSB>
+                                    <button type="button" @click.stop="save({{$key}},{{$word->id}})" class="btn btn-warning" :disabled=disableSB>
                                             Save
                                     </button>
                                 </form>
