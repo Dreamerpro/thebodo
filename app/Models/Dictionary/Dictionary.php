@@ -24,6 +24,7 @@ class Dictionary extends Model
     {
     	return $query->where('status',0);
     }
+
     public function user()
     {
         // dd("ehllo");

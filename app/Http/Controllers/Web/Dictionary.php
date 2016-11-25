@@ -27,4 +27,8 @@ class Dictionary extends Controller
     	}
     	return view('web.dictionary',['words'=>$words,'query'=>$query]);
     }
+    public function about()
+    {
+        return view('admin.dictionaryabout');
+    }
 }

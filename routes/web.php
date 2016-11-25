@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/dictionary', 'Web\Dictionary@index');
+Route::get('/dictionary/about', 'Web\Dictionary@about');
 
 @include('admin.php');
 @include('superadmin.php');
