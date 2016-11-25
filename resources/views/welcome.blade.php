@@ -112,10 +112,16 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+        <!-- Route::has('login') -->
+            @if (Auth::guest())
                 <div class="top-right links">
                     <a href="{{ url('/login') }}">Login</a>
                     <a href="{{ url('/register') }}">Register</a>
+                </div>
+            @else
+                <div class="top-right links">
+                    <a href="{{ url('/home') }}">Home</a>
+                   
                 </div>
             @endif
 
@@ -123,10 +129,12 @@
                 <div class="title m-b-md animated pulse">
                     The Bodo
                 </div>
-
-                <div class="links">
-                    <a href="/admin/">Admin</a>
+                <div class="text-center">
+                    <b><i>By the Community. For the Community.</i></b>
                 </div>
+                <!-- <div class="links">
+                    <a href="/admin/">Admin</a>
+                </div> -->
             </div>
         </div>
     </body>
