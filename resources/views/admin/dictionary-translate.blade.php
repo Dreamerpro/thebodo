@@ -31,8 +31,8 @@ if($filters[1]){$query_array['type']=$filters[1];}
                            <div>
                                 <span class="col-xs-1 col-md-1">#</span>
                                 <span class="col-xs-3 col-md-1">Word</span>
-                                <span class="hidden-xs col-md-2">Type</span>
-                                <span class="col-xs-4 col-md-4">English Definition</span>
+                                <span class="col-md-2">Type</span>
+                                <span class="col-xs-4 col-md-4"><span class="hidden-xs">English</span> Definition</span>
                                 <span class="col-xs-4 col-md-3">Bodo Definition</span>
                                 <span class="hidden-xs col-xs-1">Editor</span>
                             </div>
@@ -43,8 +43,32 @@ if($filters[1]){$query_array['type']=$filters[1];}
                             <span class="col-xs-1 col-md-1">{{$word->id}}</span>
                             <span class="col-xs-3 col-md-1">{{$word->word}}</span>
                             <span class="hidden-xs col-md-2">{{$word->wordtype}}</span>
-                            <span class="col-xs-4 col-md-4">{{$word->definition}}</span>
-                            <span class="col-xs-4 col-md-3">
+                            <span class="col-xs-8 col-sm-4 col-md-4">
+                            
+                            <div class="visible-xs-block">
+                                <h5 ><u>English</u></h5>
+                                {{$word->definition}}
+                            </div>
+                            
+                            <div class="visible-xs-block"> 
+                                <h5><u>Bodo</u></h5>
+                                @if($word->bodo_definition)
+                                    {{$word->bodo_definition}}
+                                @else
+                                    <form v-if="!status[{{$key}}]" >
+                                        <div class="form-group bodo-textarea">
+                                            <textarea v-model="words[{{$key}}]" class="form-control" placeholder="Write Bodo meaning here"></textarea>
+                                        </div>
+                                        <button type="button" @click.stop="save({{$key}},{{$word->id}})" class="btn btn-warning" :disabled=disableSB>
+                                                Save
+                                        </button>
+                                    </form>
+                                    <!-- v-if="status[{{$key}}]" -->
+                                    <span  v-html="words[{{$key}}]"></span>
+                                @endif
+                            </div>
+                            </span>
+                            <span class="col-sm-4 col-md-3 hidden-xs">
                             @if($word->bodo_definition)
                                 {{$word->bodo_definition}}
                                 
