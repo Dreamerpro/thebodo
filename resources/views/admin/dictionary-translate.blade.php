@@ -31,9 +31,9 @@ if($filters[1]){$query_array['type']=$filters[1];}
                            <div>
                                 <span class="col-xs-1 col-md-1">#</span>
                                 <span class="col-xs-3 col-md-1">Word</span>
-                                <span class="col-md-2">Type</span>
+                                <span class="hidden-xs col-md-2">Type</span>
                                 <span class="col-xs-4 col-md-4"><span class="hidden-xs">English</span> Definition</span>
-                                <span class="col-xs-4 col-md-3">Bodo Definition</span>
+                                <span class="col-sm-4 col-md-3 hidden-xs">Bodo Definition</span>
                                 <span class="hidden-xs col-xs-1">Editor</span>
                             </div>
                        </div>
@@ -41,7 +41,15 @@ if($filters[1]){$query_array['type']=$filters[1];}
                         @foreach($words as $key=>$word)
                         <div class="text-warning clearfix" style="    border-top: 1px solid #eee; padding:10px 0;">
                             <span class="col-xs-1 col-md-1">{{$word->id}}</span>
-                            <span class="col-xs-3 col-md-1">{{$word->word}}</span>
+                            <span class="col-xs-3 col-md-1">
+                                {{$word->word}}
+                                <br>
+                                <div class="visible-xs-block">
+                                    @if($word->wordtype)
+                                        ({{$word->wordtype}})
+                                    @endif
+                                </div>
+                            </span>
                             <span class="hidden-xs col-md-2">{{$word->wordtype}}</span>
                             <span class="col-xs-8 col-sm-4 col-md-4">
                             
