@@ -16,21 +16,25 @@ class Dictionary extends Controller
     {   
     	$page=$req->get('page');
     	$type=$req->get('type');
-    	
+    	$query=$req->get('query');
+        $words=DC::with('user');
+        if($query){
+            $words=$words->where('word',$query);
+        }
     	if($type && $type=='edited'){
-    		$words=DC::with('user')->where('status',2)->paginate(15);
+    		$words=$words->where('status',2)->paginate(15);
     	} 
     	else if($type && $type=='unedited'){
-    		$words=DC::with('user')->where('status',0)->paginate(15);
+    		$words=$words->where('status',0)->paginate(15);
     	} 
     	else{
-    		$words=DC::with('user')->paginate(15);
+    		$words=$words->paginate(15);
     	}
     	
     	 // return \Response::json($words,200);
 
     	// dd($words);
-    	return view('admin.dictionary-translate',['words'=>$words,'filters'=>[$page,$type]]);
+    	return view('admin.dictionary-translate',['words'=>$words,'filters'=>[$page,$type],'query'=>$query]);
     }
     public function save(Request $req)
     {

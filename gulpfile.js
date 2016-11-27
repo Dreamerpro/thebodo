@@ -17,5 +17,6 @@ elixir(mix => {
 	// mix.styles('components/font-awesome/font-awesome.css','public/css/libraries.css');
     mix.sass('app.scss')
        .webpack('app.js');
-    mix.styles(['node_modules/animate.css/animate.css','public/css/app.css'],'public/css/app.css', './');
+    mix.styles(['node_modules/animate.css/animate.css','public/css/app.css','resources/assets/components/font-awesome/css/font-awesome.css'],'public/css/app.css', './');
+    mix.copy('resources/assets/components/font-awesome/fonts','public/fonts');
 });

@@ -6,9 +6,35 @@ $query_array=[];
 if($filters[0]){$query_array['page']=$filters[0];}
 if($filters[1]){$query_array['type']=$filters[1];}
 ?>
+<div class="modal fade in" id="searchmodal" > 
+    <div class="modal-dialog">  
+        <div class="modal-content"> 
+            <div class="modal-header bg-primary"><button class="close" data-dismiss="modal">x</button> Search Words</div>
+            <div class="modal-body"> 
+            <form class="" >
+                <div class="form-group"> 
+                    <input class="form-control" type="search" name="query" placeholder="Type query here">
+                </div>
+                <div class="form-group"> 
+                    <button class="form-control btn btn-warning" type="submit" data-toggle="modal" data-target="#searchmodal">
+                    <i class="fa fa-search"></i>
+                    <span> &nbsp;Search</span>
+                    </button>
+                </div>  
+            </form>
+            </div>
+        </div>
+    </div>  
+</div>
+
  <div class="col-md-12" id="dictionaryadmin">
             <div class="panel panel-primary">
-                <div class="panel-heading"> Dictionary Translate </div>
+                <div class="panel-heading" style="height: 42px; line-height: 42px;">
+                <div style="margin-top: -8px;">   
+ 
+    <button class="btn pull-right btn-default" data-toggle="modal" data-target="#searchmodal" >  <i class="fa fa-search"></i> &nbsp; Search</button>
+                </div>
+                 Dictionary Translate </div>
 
                 <div class="panel-body">
                 <div class="pull-right">{{$words->appends($query_array)->links()}}</div>
@@ -53,8 +79,8 @@ if($filters[1]){$query_array['type']=$filters[1];}
                             <span class="hidden-xs col-md-2">{{$word->wordtype}}</span>
                             <span class="col-xs-8 col-sm-4 col-md-4">
                             
-                            <div class="visible-xs-block">
-                                <h5 ><u>English</u></h5>
+                            <div >
+                                <h5 class="visible-xs-block"><u>English</u></h5>
                                 {{$word->definition}}
                             </div>
                             
@@ -147,7 +173,7 @@ if($filters[1]){$query_array['type']=$filters[1];}
                 </div>
             </div>
 </div>
-    
+
 @endsection
 
 @section('extrascripts')
@@ -158,6 +184,7 @@ if($filters[1]){$query_array['type']=$filters[1];}
 <script type="text/javascript" src="/external/jquery.ime/src/jquery.ime.selector.js"></script>
 <script type="text/javascript" src="/external/jquery.ime/src/jquery.ime.inputmethods.js"></script>
 <link type="text/css" rel="stylesheet" href="/external/jquery.ime/css/jquery.ime.css"></link>
+<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 <script type="text/javascript">
     
     $( document ).ready( function () {

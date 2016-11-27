@@ -47,6 +47,9 @@ const app = new Vue({
     	},
         toggleSearchBar:function () {
             this.showSearchBar=!this.showSearchBar;
+        },
+        openModal:function() {
+            alert("test");
         }
     },
     computed:{
