@@ -7,13 +7,20 @@
 
 require('./bootstrap');
 
+require('./components/wordlist.js');
+require('./components/paginator.js');
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the body of the page. From here, you may begin adding components to
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+// Vue.component('example', require('./components/Example.vue'));
+
+
+
 
 const app = new Vue({
     el: '#app',
@@ -21,35 +28,41 @@ const app = new Vue({
     	words:[],
     	status:[],
     	disableSB:false,
-        showSearchBar:false
+        showSearchBar:false,
+    },
+    created:function() {
+        var vm=this;
+        bus.$on('ajax-loading',function(){
+            console.log("loading..");
+            vm.showLoading();
+        });
+        bus.$on('ajax-done',function(){
+            console.log("loading done.");
+            vm.hideLoading();
+        });
     },
     methods:{
-    	save:function(key,id) {
-    		this.disableSB=true;
-    		//send the words with id
-    		console.log(this.words[key]);
-    		self=this;
-    		this.$http.post('/api/admin/word/save', {id:id,def:this.words[key]}	)
-    		.then(
-
-    			function(argument) {
-    				console.log(argument);
-    				this.disableSB=false;
-    				self.status[key]=true;
-    			},
-    			function(argument) {
-    				console.log(argument);
-    				this.disableSB=false;
-    			}
-    		)
-    		
-    		//hide the form
-    	},
+    	showLoading:function() {
+            swal({
+                title:"Loading please wait!",
+                html:"<br><i class='fa fa-cog fa-3x fa-spin'></i><br>",
+                allowOutsideClick: false,
+                showCancelButton: false,
+                showConfirmButton: false,
+            }) ; 
+        },
+        hideLoading:function() {
+            swal.close();
+        },
         toggleSearchBar:function () {
             this.showSearchBar=!this.showSearchBar;
         },
-        openModal:function() {
-            alert("test");
+
+        edit:function(key,word) {
+            // console.log(key);
+            // console.log(word);
+            this.status[key]=true;
+            this.words[key]=word.bodo_definition;
         }
     },
     computed:{

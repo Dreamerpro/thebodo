@@ -1,6 +1,6 @@
 
 window._ = require('lodash');
-
+window.swal = require('sweetalert2');
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -17,7 +17,8 @@ require('bootstrap-sass');
  */
 
 window.Vue = require('vue');
-require('vue-resource');
+var VueResource = require('vue-resource');
+Vue.use(VueResource);
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
@@ -30,7 +31,7 @@ Vue.http.interceptors.push((request, next) => {
 
     next();
 });
-
+window.bus = new Vue();
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

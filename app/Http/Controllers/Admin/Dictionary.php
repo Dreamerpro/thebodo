@@ -14,28 +14,58 @@ class Dictionary extends Controller
 	// }
     public function index(Request $req)
     {   
-    	$page=$req->get('page');
-    	$type=$req->get('type');
-    	$query=$req->get('query');
+    	 // return \Response::json($words,200);
+
+    	// dd($words);
+    	return view('admin.dictionary-translate');
+    }
+    public function getdictionary(Request $req)
+    {
+        $page=$req->get('page');
+        $type=$req->get('type');
+        $query=$req->get('query');
+        $words=DC::with('user');
+        // if($query){
+        //     $words=$words->where('word',$query);
+        // }
+        if($type && $type=='edited'){
+            $words=$words->where('status',2)->paginate(15);
+        } 
+        else if($type && $type=='unedited'){
+            $words=$words->where('status',0)->paginate(15);
+        } 
+        else{
+            $words=$words->paginate(15);
+        }
+        foreach ($words as $key => $word) {
+            $word->canEdit=\Auth::user()->canEditWord($word);
+        }
+        return ['words'=>$words,'filters'=>[$page,$type],'query'=>$query];
+    }
+    public function search(Request $req)
+    {
+        $page=$req->get('page');
+        $type=$req->get('type');
+        $query=$req->get('query');
         $words=DC::with('user');
         if($query){
             $words=$words->where('word',$query);
         }
-    	if($type && $type=='edited'){
-    		$words=$words->where('status',2)->paginate(15);
-    	} 
-    	else if($type && $type=='unedited'){
-    		$words=$words->where('status',0)->paginate(15);
-    	} 
-    	else{
-    		$words=$words->paginate(15);
-    	}
-    	
-    	 // return \Response::json($words,200);
-
-    	// dd($words);
-    	return view('admin.dictionary-translate',['words'=>$words,'filters'=>[$page,$type],'query'=>$query]);
+        if($type && $type=='edited'){
+            $words=$words->where('status',2)->paginate(15);
+        } 
+        else if($type && $type=='unedited'){
+            $words=$words->where('status',0)->paginate(15);
+        } 
+        else{
+            $words=$words->paginate(15);
+        }
+        foreach ($words as $key => $word) {
+            $word->canEdit=\Auth::user()->canEditWord($word);
+        }
+        return ['words'=>$words,'filters'=>[$page,$type],'query'=>$query];
     }
+
     public function save(Request $req)
     {
     	 $wid=$req->get('id');

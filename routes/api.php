@@ -20,4 +20,7 @@ use Illuminate\Http\Request;
 Route::group(['middleware'=>['web','auth']], function ()
 {
 	Route::post('/admin/word/save','\App\Http\Controllers\Admin\Dictionary@save') ;
+	Route::post('/get/getdictionary','\App\Http\Controllers\Admin\Dictionary@getdictionary') ;
+	Route::post('/dictionary/search','\App\Http\Controllers\Admin\Dictionary@search') ;
+	
 });

@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>The Bodo</title>
+        <title>The BODO</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -107,6 +107,95 @@
               -webkit-animation-fill-mode: both;
               animation-fill-mode: both;
             }
+            .bg-blue{
+               /* background-color: #338FE1;
+                color: #fff;*/
+            }
+            @-webkit-keyframes lightSpeedIn {
+              from {
+                -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+                transform: translate3d(100%, 0, 0) skewX(-30deg);
+                opacity: 0;
+              }
+
+              60% {
+                -webkit-transform: skewX(20deg);
+                transform: skewX(20deg);
+                opacity: 1;
+              }
+
+              80% {
+                -webkit-transform: skewX(-5deg);
+                transform: skewX(-5deg);
+                opacity: 1;
+              }
+
+              to {
+                -webkit-transform: none;
+                transform: none;
+                opacity: 1;
+              }
+            }
+
+            @keyframes lightSpeedIn {
+              from {
+                -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+                transform: translate3d(100%, 0, 0) skewX(-30deg);
+                opacity: 0;
+              }
+
+              60% {
+                -webkit-transform: skewX(20deg);
+                transform: skewX(20deg);
+                opacity: 1;
+              }
+
+              80% {
+                -webkit-transform: skewX(-5deg);
+                transform: skewX(-5deg);
+                opacity: 1;
+              }
+
+              to {
+                -webkit-transform: none;
+                transform: none;
+                opacity: 1;
+              }
+            }
+
+            .lightSpeedIn {
+              -webkit-animation-name: lightSpeedIn;
+              animation-name: lightSpeedIn;
+              -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+            }
+            @-webkit-keyframes fadeIn {
+              from {
+                opacity: 0;
+              }
+
+              to {
+                opacity: 1;
+              }
+            }
+
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+              }
+
+              to {
+                opacity: 1;
+              }
+            }
+
+            .fadeIn {
+              -webkit-animation-name: fadeIn;
+              animation-name: fadeIn;
+            }
+            .links a:hover{
+                text-decoration: line-through;
+            }
 
         </style>
     </head>
@@ -127,14 +216,20 @@
 
             <div class="content">
                 <div class="title m-b-md animated pulse">
-                    The Bodo
+                    The <span class="bg-blue">BODO</span>
                 </div>
-                <div class="text-center">
-                    <b><i>By the Community. For the Community.</i></b>
+                <div class=" animated lightSpeedIn" style="text-align: end;">
+                    <small class="text-right"> <b><i>By the Community. For the Community.</i></b></small>
                 </div>
-                <!-- <div class="links">
-                    <a href="/admin/">Admin</a>
-                </div> -->
+                <br>    
+
+                <div class="links animated fadeIn">
+                    <a href="/about/">About</a>
+                    <a href="/history/">History</a>
+                    <a href="/culture/">Culture</a>
+                    <a href="/popular/">Popular</a>
+                    <a href="/forum/">Forum</a>
+                </div>
             </div>
         </div>
     </body>

@@ -17,7 +17,15 @@
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
-        ]); ?>
+        ]); ?>;
+        window.UserId=<?php 
+            if(Auth::user()){
+                echo "'".Auth::user()->id."'";
+            }
+            else{
+                echo null;
+            }; 
+            ?>;
     </script>
 </head>
 <body>

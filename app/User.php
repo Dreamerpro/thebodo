@@ -43,6 +43,7 @@ class User extends Authenticatable
     }
     public function canEditWord($word)
     {
-        return $word->user_id==$this->id;
+
+        return !$word->user_id || $word->user_id==$this->id;
     }
 }
