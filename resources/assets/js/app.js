@@ -9,6 +9,7 @@ require('./bootstrap');
 
 require('./components/wordlist.js');
 require('./components/paginator.js');
+require('./components/history.js');
 
 
 /**

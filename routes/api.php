@@ -22,5 +22,12 @@ Route::group(['middleware'=>['web','auth']], function ()
 	Route::post('/admin/word/save','\App\Http\Controllers\Admin\Dictionary@save') ;
 	Route::post('/get/getdictionary','\App\Http\Controllers\Admin\Dictionary@getdictionary') ;
 	Route::post('/dictionary/search','\App\Http\Controllers\Admin\Dictionary@search') ;
-	
+});
+
+Route::group(['middleware'=>['web']], function ()
+{
+	Route::get('/history/all','HistoryController@getall');
+	Route::post('/history/create','HistoryController@saveEvent');
+	Route::post('/history/update','HistoryController@updateEvent');
+	Route::post('/history/delete','HistoryController@deleteEvent');
 });

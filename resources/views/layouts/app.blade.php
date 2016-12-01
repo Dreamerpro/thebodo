@@ -18,14 +18,14 @@
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>;
-        window.UserId=<?php 
-            if(Auth::user()){
-                echo "'".Auth::user()->id."'";
-            }
-            else{
-                echo null;
-            }; 
-            ?>;
+        // <?php 
+        //     if(Auth::user()){
+        //         echo "window.UserId='".Auth::user()->id."'";
+        //     }
+        //     else{
+        //         echo "";
+        //     }; 
+        //     ?>
     </script>
 </head>
 <body>
