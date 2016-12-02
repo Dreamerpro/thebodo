@@ -9,10 +9,10 @@
         <div class="list-group pl-20" >
             <div class="list-group-item clearfix tl" v-for="event in history">
             <span class="line"></span>
-                <div class="col-xs-2">
-                    <div class="circle"> {{event.year}}{{event.month?'-'+event.month:''}}{{event.date?'-'+event.date:''}}</div>
+                <div class="col-xs-1">
+                    <div class="circle text-primary"> {{event.year}}{{event.month?'-'+event.month:''}}{{event.date?'-'+event.date:''}}</div>
                 </div>
-                <p class="col-xs-10">{{event.details}}</p>
+                <p class="col-xs-11">{{event.details}}</p>
             </div>
         </div>                   
     </div>
@@ -108,7 +108,7 @@
     .circle{
         width: 50px;
         height: 50px;
-        border: 1px solid #eee;
+        border: 1px solid #3097D1;
         line-height: 50px;
         text-align: center;
         border-radius: 50%;
@@ -120,7 +120,7 @@
         border:0;
     }
     .list-group-item.tl{
-    border-left: 1px solid #d3e0e9;
+    border-left: 1px solid #3097D1;
     padding-left: 0px;
     }
     .pl-20{
