@@ -11,8 +11,8 @@
         </div>
     </div>
 </div>
-<template id="history" type="script/template">
-    <div class="panel panel-default">
+<!-- <template id="history" type="script/template">
+  <div class="panel panel-default">
     <div class="panel-heading">History<button class="btn btn-default pull-right" @click="showCreateForm()"><i class="fa fa-plus"></i></button></div>
 
     <div class="panel-body">   
@@ -24,6 +24,6 @@
             </div>
         </div>                   
     </div>
-    </div>
-</template>
+</div>     
+</template> -->
 @endsection

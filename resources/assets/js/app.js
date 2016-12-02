@@ -9,7 +9,7 @@ require('./bootstrap');
 
 require('./components/wordlist.js');
 require('./components/paginator.js');
-require('./components/history.js');
+import history from './components/history.vue';
 
 
 /**
@@ -71,6 +71,9 @@ const app = new Vue({
     },
     ready:{
 
+    },
+    components:{
+        history
     }
 });
 
