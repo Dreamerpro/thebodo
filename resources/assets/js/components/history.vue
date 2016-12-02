@@ -6,10 +6,13 @@
 
     <div class="panel-body">   
         
-        <div class="list-group">
-            <div class="list-group-item" v-for="event in history">
-                <p>{{event.year}}{{event.month?'-'+event.month:''}}{{event.date?'-'+event.date:''}}</p>
-                <p >{{event.details}}</p>
+        <div class="list-group pl-20" >
+            <div class="list-group-item clearfix tl" v-for="event in history">
+            <span class="line"></span>
+                <div class="col-xs-2">
+                    <div class="circle"> {{event.year}}{{event.month?'-'+event.month:''}}{{event.date?'-'+event.date:''}}</div>
+                </div>
+                <p class="col-xs-10">{{event.details}}</p>
             </div>
         </div>                   
     </div>
@@ -101,3 +104,26 @@
         }//methods end
     }
 </script>
+<style scoped>
+    .circle{
+        width: 50px;
+        height: 50px;
+        border: 1px solid #eee;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        z-index:10;
+            margin-left: -40px;
+        background: white;
+    }
+    .list-group-item{
+        border:0;
+    }
+    .list-group-item.tl{
+    border-left: 1px solid #d3e0e9;
+    padding-left: 0px;
+    }
+    .pl-20{
+        padding-left: 20px;
+    }
+</style>
